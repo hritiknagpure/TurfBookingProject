@@ -1,0 +1,70 @@
+﻿@model LoginFormASPcore.Models.UserTbl
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Name Field -->
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Enter your name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Gender Field -->
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" asp-for="Gender" class="form-check-input" value="Male" id="genderMale" />
+                        <label class="form-check-label" for="genderMale">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" asp-for="Gender" class="form-check-input" value="Female" id="genderFemale" />
+                        <label class="form-check-label" for="genderFemale">Female</label>
+                    </div>
+                </div>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <!-- Age Field -->
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" placeholder="Enter your age" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group mt-3">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Link to Login Page -->
+<div class="mt-3">
+    <a asp-action="Login" class="btn btn-link">Already have an account? Login here</a>
+</div>

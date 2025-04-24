@@ -1,0 +1,174 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+.about-section {
+    padding: 50px 0;
+}
+
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+
+body {
+    margin-bottom: 60px;
+}
+
+/*contact*/
+
+.contact-header {
+    background: #28a745;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.contact-section {
+    padding: 50px 0;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+
+.home-header {
+    background: #007bff;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.home-section, .features-section, .about-section, .contact-section {
+    padding: 50px 0;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    color: #007bff;
+}
+
+.footer {
+    background: #343a40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* General Animation Styles */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 2s ease-in;
+}
+
+.animate-slide-up {
+    animation: slideUp 1.5s ease-out;
+}
+
+/* Feature Icons */
+.feature-icon i {
+    font-size: 3rem;
+    color: #f39c12;
+    transition: transform 0.3s ease;
+}
+
+    .feature-icon i:hover {
+        transform: scale(1.2);
+    }
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+.btn-hover-effect {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .btn-hover-effect:hover {
+        background-color: #fff;
+        color: #007bff;
+        transform: scale(1.1);
+    }
+
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    z-index: 999;
+}
+
+.form-control:focus + label {
+    transform: translateY(-20px);
+    font-size: 12px;
+    color: #007bff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.About-header {
+    background: #a366fe;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.welcome-header {
+    background: #007bff;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}

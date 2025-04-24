@@ -1,0 +1,17 @@
+﻿@model EventBooking
+
+<div class="card shadow-lg mt-5 mx-auto" style="max-width: 500px;">
+    <div class="card-header bg-success text-white text-center">
+        <h4>🎟️ Your Ticket</h4>
+    </div>
+    <div class="card-body">
+        <p><strong>Event:</strong> @Model.EventName</p>
+        <p><strong>Date & Time:</strong> @Model.EventDate.ToString("f")</p>
+        <p><strong>Booked By:</strong> @Model.BookedBy</p>
+    </div>
+    <div class="card-footer text-center">
+        <a asp-action="DownloadTicket" asp-route-id="@Model.Id" class="btn btn-outline-primary">
+            Download PDF
+        </a>
+    </div>
+</div>

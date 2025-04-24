@@ -1,0 +1,621 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+
+        .stats-counter {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+        }
+
+        .counter-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #chatbot-window {
+            width: 300px;
+            height: 400px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            display: none;
+        }
+
+        #chatbot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chatbot-messages {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .user-message, .ai-message {
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+
+        .user-message {
+            background-color: #e0f7fa;
+            text-align: left;
+        }
+
+        .ai-message {
+            background-color: #ffecb3;
+            text-align: left;
+        }
+
+        #chatbot-toggle {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #send-message {
+            margin-top: 10px;
+        }
+
+        input#user-input {
+            margin-top: 10px;
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+
+        /* //animation */
+        .welcome-header {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #0d6efd;
+        }
+
+        .animate-heading {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #0d6efd;
+            /* Using Animate.css slow animation */
+            animation: animate__zoomIn 2s ease-in-out;
+        }
+
+        .animate-text {
+            font-size: 1.5rem;
+            color: #f8f9fa;
+            /* Using transition for smooth effect */
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;
+        }
+
+        /* Trigger animation when page loads */
+        .welcome-header.loaded .animate-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+
+
+    <br />
+    <!-- Welcome Section -->
+    <header class="welcome-header">
+        <div class="container">
+            <h1 class="animate__animated animate__zoomIn animate__slow">Welcome to TURF Playground</h1>
+            <p class="lead animate-text">Your ultimate destination for fun and learning!</p>
+        </div>
+    </header>
+
+
+    <br />
+
+    <!-- Services Cards Section -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <img src="https://img.freepik.com/free-photo/cricket-bat-ball-foreground-pitch_91128-4644.jpg?t=st=1735802716~exp=1735806316~hmac=c8e84da8b14ad88ad2942c92254667966613d054b2760b3bc78e981d7b991651&w=1060" class="card-img-top" alt="Permits">
+                    <div class="card-body">
+                        <h4 class="card-title">Cricket</h4>
+                        <p class="card-text"> From traditional cricket grounds to innovative indoor facilities.</p>
+                    </div>
+                    <div class="card-footer">
+                        @Html.ActionLink("Book Now👍", "BookEvent", "Home", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <img src="https://images.pexels.com/photos/3448250/pexels-photo-3448250.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" class="card-img-top" alt="Football Stadium">
+                    <div class="card-body">
+                        <h4 class="card-title">Football</h4>
+                        <p class="card-text">Explore and book the best in class natural grass and football .</p>
+                    </div>
+                    <div class="card-footer">
+                        @Html.ActionLink("Book Now👍", "BookEvent", "Home", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <img src="https://www.eventbookings.com/wp-content/uploads/2023/12/Causes-that-inspire-to-host-a-community-event--1536x964.webp" class="card-img-top" alt="Community Events">
+                    <div class="card-body">
+                        <h4 class="card-title">Community Events</h4>
+                        <p class="card-text">community events hold a special place in our hearts and communities.</p>
+                    </div>
+                    <div class="card-footer">
+                        @Html.ActionLink("Book Now👍", "BookEvent", "Home", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Our Premium Turf Features</h2>
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <p class="text-justify">
+                        Book your game on our premium multi-sport turf, perfect for cricket, football, hockey, badminton, and tennis. Whether you're organizing a friendly match, a practice session, or a competitive tournament, our high-quality surface ensures an exciting and professional experience for all sports enthusiasts. Reserve your spot today for an unforgettable game!
+                    </p>
+                    <ul class="list-unstyled">
+                        <li><strong>High-Quality Turf:</strong> Smooth and durable surface designed for multiple sports.</li>
+                        <li><strong>Flexible Booking:</strong> Choose from a variety of time slots to suit your schedule.</li>
+                        <li><strong>Convenient Location:</strong> Located in the heart of the city for easy access.</li>
+                        <li><strong>State-of-the-Art Facilities:</strong> Equipped with modern amenities to enhance your playing experience.</li>
+                        <li><strong>Group and Individual Sessions:</strong> Whether solo or in groups, we accommodate both types of sessions.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://www.tonbridgeangels.co.uk/images/pitch-hire/4339-original.jpg" class="img-fluid" alt="Sports Turf">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Stats Counter Section -->
+    <section class="stats-counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="counter-item">
+                        <div class="counter-number" data-target="500">0+</div>
+                        <div class="counter-label">Happy Players</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="counter-item">
+                        <div class="counter-number" data-target="19">0</div>
+                        <div class="counter-label">Premium Turfs</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="counter-item">
+                        <div class="counter-number" data-target="9">0+</div>
+                        <div class="counter-label">Sports Available</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="counter-item">
+                        <div class="counter-number" data-target="97">0%</div>
+                        <div class="counter-label">Satisfaction Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br />
+    @* ------------ *@
+
+
+
+    <!-- Turf Booking Section -->
+    <section class="turf-section py-5">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2>Book Your Game, Play Anytime!</h2>
+                <p>Premium turfs and playgrounds for all your favorite sports</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-futbol fa-3x mb-3 text-success"></i>
+                        <h4>Football & Futsal</h4>
+                        <p>Enjoy a high-quality turf experience for football and futsal. Book your slot today and play like a pro!</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-basketball-ball fa-3x mb-3 text-warning"></i>
+                        <h4>Basketball</h4>
+                        <p>Play basketball on well-maintained courts with top-notch facilities. Whether casual or competitive, we got you covered!</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-running fa-3x mb-3 text-danger"></i>
+                        <h4>Fitness & Training</h4>
+                        <p>Our open playgrounds and training areas are perfect for fitness sessions, running, and agility workouts.</p>
+                    </div>
+                </div>
+            </div>
+            @* <div class="text-center mt-4"> *@
+            @*     <a href="#" class="btn btn-primary btn-lg">Book Now</a> *@
+            @* </div> *@
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5">
+        <div class="container">
+            <h2 class="text-center">Frequently Asked Questions</h2>
+            <div class="dropdown mt-4">
+                <div class="faq-item">
+                    <button class="btn btn-light dropdown-toggle w-100 text-start mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        What is TURF Playground?
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li class="dropdown-item">
+                            TURF Playground is a platform offering sports facilities and bookings for turf-based games like cricket, football, and more.
+                        </li>
+                    </ul>
+                </div>
+                <div class="faq-item">
+                    <button class="btn btn-light dropdown-toggle w-100 text-start mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        How can I book a slot?
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li class="dropdown-item">
+                            You can book a slot by selecting the sport and time from our online booking system.
+                        </li>
+                    </ul>
+                </div>
+                <div class="faq-item">
+                    <button class="btn btn-light dropdown-toggle w-100 text-start mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        What are the operating hours?
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li class="dropdown-item">
+                            Our operating hours are from 6:00 AM to 10:00 PM, seven days a week.
+                        </li>
+                    </ul>
+                </div>
+                <div class="faq-item">
+                    <button class="btn btn-light dropdown-toggle w-100 text-start mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Can I cancel or reschedule my booking?
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li class="dropdown-item">
+                            Yes, you can cancel or reschedule your booking up to 24 hours before the scheduled time. Please refer to our cancellation policy for details.
+                        </li>
+                    </ul>
+                </div>
+                <div class="faq-item">
+                    <button class="btn btn-light dropdown-toggle w-100 text-start mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Are there any membership plans available?
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li class="dropdown-item">
+                            Yes, we offer various membership plans with benefits such as discounted rates and priority booking. Please check our membership page for more details.
+                        </li>
+                    </ul>
+                </div>
+                <div class="faq-item">
+                    <button class="btn btn-light dropdown-toggle w-100 text-start mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        What safety measures are in place?
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li class="dropdown-item">
+                            We ensure regular sanitization of the facilities, provide first-aid kits, and have trained staff available for assistance.
+                        </li>
+                    </ul>
+                </div>
+                <div class="faq-item">
+                    <button class="btn btn-light dropdown-toggle w-100 text-start mb-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Can I bring my own equipment?
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li class="dropdown-item">
+                            Yes, you are welcome to bring your own equipment. We also provide equipment for rent if needed.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br />
+    <br />
+    <br />
+    <!-- Chatbot Section -->
+    <div id="chatbot-container">
+        <button id="chatbot-toggle" class="btn btn-primary">Chat with us</button>
+        <div id="chatbot-window">
+            <div id="chatbot-header">
+                <h5>Chatbot</h5>
+                <button id="chatbot-close" class="btn-close"></button>
+            </div>
+            <div id="chatbot-messages">
+                <div class="ai-message">Hello! How can I assist you today?</div>
+            </div>
+            <input type="text" id="user-input" placeholder="Type your message here...">
+            <button id="send-message" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+
+
+
+          // Disable Right Click
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+        });
+
+        // Disable Keyboard Shortcuts for Inspect Element & View Source
+        document.addEventListener("keydown", function(event) {
+            if (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S")) {
+                event.preventDefault();
+            }
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+                event.preventDefault();
+            }
+        });
+
+        // Detect DevTools Open (Console)
+        setInterval(function() {
+            let before = new Date().getTime();
+            debugger;
+            let after = new Date().getTime();
+            if (after - before > 10) {
+                alert("Developer tools detected! Please close them.");
+                window.location.href = "about:blank";
+            }
+        }, 1000);
+
+
+
+
+
+        // Toggle the visibility of the chatbot window when the "Chat with us" button is clicked
+        document.getElementById('chatbot-toggle').addEventListener('click', function() {
+            var chatbotWindow = document.getElementById('chatbot-window');
+            if (chatbotWindow.style.display === 'none' || chatbotWindow.style.display === '') {
+                chatbotWindow.style.display = 'block';
+            } else {
+                chatbotWindow.style.display = 'none';
+            }
+        });
+
+        // Close the chatbot window when the close button is clicked
+        document.getElementById('chatbot-close').addEventListener('click', function() {
+            document.getElementById('chatbot-window').style.display = 'none';
+        });
+
+        // Send message and display the chatbot's response
+        document.getElementById('send-message').addEventListener('click', function() {
+            var userMessage = document.getElementById('user-input').value;
+            if (userMessage.trim() !== '') {
+                // Display user message
+                var userMessageElement = document.createElement('div');
+                userMessageElement.className = 'user-message';
+                userMessageElement.textContent = userMessage;
+                document.getElementById('chatbot-messages').appendChild(userMessageElement);
+
+                // Generate AI response based on user input
+                var aiResponseElement = document.createElement('div');
+                aiResponseElement.className = 'ai-message';
+
+                // Simple chatbot logic
+                       if (userMessage.toLowerCase().includes('hello')) {
+            aiResponseElement.textContent = 'Hi there! How can I help you today?';
+        } else if (userMessage.toLowerCase().includes('bye')) {
+            aiResponseElement.textContent = 'Goodbye! Have a great day!';
+        } else if (userMessage.toLowerCase().includes('help')) {
+            aiResponseElement.textContent = 'I can assist you with general inquiries or information. What do you need help with?';
+        } else if (userMessage.toLowerCase().includes('how are you')) {
+            aiResponseElement.textContent = 'I\'m doing great, thank you for asking! How about you?';
+        } else if (userMessage.toLowerCase().includes('what is your name')) {
+            aiResponseElement.textContent = 'I am a chatbot, and I don\'t have a personal name, but you can call me Chatbot!';
+        } else if (userMessage.toLowerCase().includes('where are you from')) {
+            aiResponseElement.textContent = 'I exist in the digital world, so I don\'t have a physical location, but I\'m always here to help you!';
+        } else if (userMessage.toLowerCase().includes('tell me a joke')) {
+            aiResponseElement.textContent = 'Why don’t skeletons fight each other? They don’t have the guts!';
+        } else if (userMessage.toLowerCase().includes('thank you')) {
+            aiResponseElement.textContent = 'You\'re welcome! Let me know if you need anything else!';
+        } else if (userMessage.toLowerCase().includes('how do I book a ticket')) {
+            aiResponseElement.textContent = 'To book a ticket, visit the official ticketing website and select your destination, dates, and seat preference. Then, proceed to payment!';
+        } else if (userMessage.toLowerCase().includes('what time is it')) {
+            aiResponseElement.textContent = 'I\'m afraid I can\'t give you the time. Please check your device for the current time!';
+        } else if (userMessage.toLowerCase().includes('how can I reset my password')) {
+            aiResponseElement.textContent = 'To reset your password, go to the login page, click on "Forgot Password," and follow the instructions sent to your email.';
+        } else if (userMessage.toLowerCase().includes('how to apply for a job')) {
+            aiResponseElement.textContent = 'To apply for a job, visit the company’s careers page, search for open positions, and submit your resume along with a cover letter.';
+        } else if (userMessage.toLowerCase().includes('where can I find flights')) {
+            aiResponseElement.textContent = 'You can find flights on travel websites like Expedia, Skyscanner, or directly through airlines\' websites.';
+        } else if (userMessage.toLowerCase().includes('what is your favorite color')) {
+            aiResponseElement.textContent = 'I don’t have preferences, but I think many people love blue and green!';
+        } else if (userMessage.toLowerCase().includes('how do I contact support')) {
+            aiResponseElement.textContent = 'You can contact support by visiting the support or contact page on the website and sending an email or using the live chat option.';
+        } else if (userMessage.toLowerCase().includes('can I change my flight date')) {
+            aiResponseElement.textContent = 'Yes, you can usually change your flight date by contacting the airline directly or through the booking platform, but check for any change fees.';
+        } else if (userMessage.toLowerCase().includes('how do I book a hotel room')) {
+            aiResponseElement.textContent = 'To book a hotel room, visit a hotel booking website or app, select your location, dates, and room preferences, then proceed to confirm your booking.';
+        } else if (userMessage.toLowerCase().includes('what is the weather today')) {
+            aiResponseElement.textContent = 'I cannot fetch live weather information, but you can check your favorite weather app or website!';
+        } else if (userMessage.toLowerCase().includes('can I cancel my order')) {
+            aiResponseElement.textContent = 'You may be able to cancel your order within a certain time frame. Check the order cancellation policy or contact the company.';
+        } else if (userMessage.toLowerCase().includes('how do I track my order')) {
+            aiResponseElement.textContent = 'To track your order, visit the order tracking page on the website and enter your order number or tracking ID.';
+        } else if (userMessage.toLowerCase().includes('how do I change my address')) {
+            aiResponseElement.textContent = 'You can update your address in your account settings on the website or by contacting customer service.';
+        } else if (userMessage.toLowerCase().includes('how to get a refund')) {
+            aiResponseElement.textContent = 'To get a refund, you need to contact the company’s customer service or use their return/refund request process on their website.';
+        } else if (userMessage.toLowerCase().includes('how do I subscribe to a newsletter')) {
+            aiResponseElement.textContent = 'To subscribe to a newsletter, visit the website’s newsletter sign-up page and enter your email address.';
+        } else if (userMessage.toLowerCase().includes('how can I make a reservation')) {
+            aiResponseElement.textContent = 'To make a reservation, visit the reservation page of the service you wish to book and fill out the necessary details for your booking.';
+        } else if (userMessage.toLowerCase().includes('how do I open an account')) {
+            aiResponseElement.textContent = 'To open an account, go to the sign-up page on the website and fill in the required details like your name, email, and password.';
+        } else if (userMessage.toLowerCase().includes('can I pay by cash')) {
+            aiResponseElement.textContent = 'It depends on the service or store. Check their payment options on the checkout page to see if cash payment is accepted.';
+        } else if (userMessage.toLowerCase().includes('how do I find a doctor')) {
+            aiResponseElement.textContent = 'You can find a doctor through health insurance provider websites, medical directories, or apps that allow you to search by specialty or location.';
+        } else if (userMessage.toLowerCase().includes('how can I pay my bill')) {
+            aiResponseElement.textContent = 'You can pay your bill through the payment options available on the company’s website or app, which typically include credit cards, online banking, or e-wallets.';
+        } else if (userMessage.toLowerCase().includes('how do I check my balance')) {
+            aiResponseElement.textContent = 'You can check your balance through the banking app, ATM, or by logging into your online account on your bank’s website.';
+        } else if (userMessage.toLowerCase().includes('how can I upgrade my plan')) {
+            aiResponseElement.textContent = 'To upgrade your plan, visit your account settings or the subscription page, where you can choose a new plan and make the upgrade.';
+        } else if (userMessage.toLowerCase().includes('how do I book a table at a restaurant')) {
+            aiResponseElement.textContent = 'To book a table, visit the restaurant’s website or use a reservation platform like OpenTable to select a time and make your booking.';
+        } else if (userMessage.toLowerCase().includes('how can I track my flight')) {
+            aiResponseElement.textContent = 'You can track your flight by entering the flight number on a flight tracking website or by checking with the airline.';
+        } else if (userMessage.toLowerCase().includes('how can I save on shipping costs')) {
+            aiResponseElement.textContent = 'You can save on shipping by choosing standard shipping, purchasing in bulk, or using discount codes if available.';
+        } else if (userMessage.toLowerCase().includes('how do I get more followers')) {
+            aiResponseElement.textContent = 'To get more followers, post engaging content regularly, interact with your audience, and use appropriate hashtags and promotion strategies.';
+        } else if (userMessage.toLowerCase().includes('how do I update my profile picture')) {
+            aiResponseElement.textContent = 'You can update your profile picture by going to your account settings or profile page and uploading a new image.';
+        } else if (userMessage.toLowerCase().includes('how do I delete my account')) {
+            aiResponseElement.textContent = 'To delete your account, visit the account settings page and look for the option to deactivate or delete your account, or contact customer support.';
+        } else if (userMessage.toLowerCase().includes('how do I contact customer support')) {
+            aiResponseElement.textContent = 'To contact customer support, visit the support page or use the live chat feature on the website.';
+        } else if (userMessage.toLowerCase().includes('how do I get my invoice')) {
+            aiResponseElement.textContent = 'You can get your invoice by logging into your account and accessing the "Invoices" section, or you may receive it by email after your purchase.';
+        } else if (userMessage.toLowerCase().includes('how do I request a refund')) {
+            aiResponseElement.textContent = 'To request a refund, visit the refund policy page or contact customer support for the steps to follow.';
+        } else if (userMessage.toLowerCase().includes('how do I redeem my coupon code')) {
+            aiResponseElement.textContent = 'To redeem a coupon code, enter the code at checkout in the “promo code” or “coupon code” section before completing your purchase.';
+        } else if (userMessage.toLowerCase().includes('how do I upgrade my software')) {
+            aiResponseElement.textContent = 'To upgrade your software, check for updates within the application or visit the software’s website to download the latest version.';
+        } else if (userMessage.toLowerCase().includes('how do I find an address')) {
+            aiResponseElement.textContent = 'You can use Google Maps or another map service to search for an address and get directions.';
+        } else if (userMessage.toLowerCase().includes('how do I make a payment online')) {
+            aiResponseElement.textContent = 'To make an online payment, select your payment method (credit card, PayPal, etc.) and enter your payment details on the checkout page.';
+        } else if (userMessage.toLowerCase().includes('how do I find a good deal')) {
+            aiResponseElement.textContent = 'To find a good deal, look for promotions, discounts, and special offers on the company’s website or use deal-finding platforms.';
+        } else if (userMessage.toLowerCase().includes('can I change my order')) {
+            aiResponseElement.textContent = 'You can change your order if it hasn’t been processed yet. Contact the company immediately to request changes.';
+        } else if (userMessage.toLowerCase().includes('how do I delete my order history')) {
+            aiResponseElement.textContent = 'Order history deletion options depend on the website or app, but it is usually found in your account settings under privacy or history preferences.';
+        } else if (userMessage.toLowerCase().includes('can I return a product')) {
+            aiResponseElement.textContent = 'You can return a product by checking the return policy, and you may need to contact customer service or use a return portal.';
+        } else if (userMessage.toLowerCase().includes('how do I sign out')) {
+            aiResponseElement.textContent = 'To sign out, look for the sign-out option in the account or profile section of the website or app.';
+        } else if (userMessage.toLowerCase().includes('how do I book a cab')) {
+            aiResponseElement.textContent = 'To book a cab, use a ride-hailing app like Uber or Lyft, or call a local taxi service.';
+        } else if (userMessage.toLowerCase().includes('how do I check my email')) {
+            aiResponseElement.textContent = 'To check your email, open your email app or log into your email provider’s website with your account credentials.';
+        } else if (userMessage.toLowerCase().includes('how do I join a webinar')) {
+            aiResponseElement.textContent = 'To join a webinar, you usually receive an invitation with a link. Click the link at the scheduled time to join the session.';
+        } else if (userMessage.toLowerCase().includes('how do I get more storage space')) {
+            aiResponseElement.textContent = 'You can get more storage space by upgrading your plan with your cloud service provider or purchasing additional storage.';
+        } else if (userMessage.toLowerCase().includes('how do I change my password')) {
+            aiResponseElement.textContent = 'To change your password, go to your account settings and look for the password change option.';
+        } else if (userMessage.toLowerCase().includes('how can I find my order number')) {
+            aiResponseElement.textContent = 'Your order number can be found in the confirmation email you received after purchasing, or in your account order history.';
+        } else {
+            aiResponseElement.textContent = 'I am a chatbot, and I received your message: "' + userMessage + '"';
+        }
+
+
+                // Append AI response to the chat
+                document.getElementById('chatbot-messages').appendChild(aiResponseElement);
+
+                // Clear input field and scroll to the bottom
+                document.getElementById('user-input').value = '';
+                document.getElementById('chatbot-messages').scrollTop = document.getElementById('chatbot-messages').scrollHeight;
+            }
+        });
+
+                function animateCounter(element, duration = 4069) {
+            const target = parseInt(element.dataset.target);
+            let start = 0;
+            const increment = target / (duration / 17); // Roughly 70fps
+
+            function updateCounter() {
+                start += increment;
+                element.innerText = Math.floor(start);
+                if (start < target) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.innerText = target + (element.innerText.includes('%') ? '%' : '+'); // Ensure final value is exact
+                }
+            }
+
+            updateCounter();
+        }
+
+        const counterNumbers = document.querySelectorAll('.counter-number');
+
+        function handleIntersection(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(handleIntersection, {
+            threshold: 0.4 // Adjust as needed: how much of the element needs to be visible to trigger
+        });
+
+        counterNumbers.forEach(number => {
+            observer.observe(number);
+        });
+
+
+          // Add "loaded" class after a short delay for smooth animation
+        window.onload = function () {
+            document.querySelector('.welcome-header').classList.add('loaded');
+        };
+    </script>
+</body>
+</html>

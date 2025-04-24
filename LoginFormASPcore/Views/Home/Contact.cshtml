@@ -1,0 +1,71 @@
+﻿<!-- Header -->
+<header class="contact-header">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you. Get in touch!</p>
+    </div>
+</header>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2>Get In Touch</h2>
+            <p>Fill out the form below and we will get back to you as soon as possible.</p>
+        </div>
+        <div class="row">
+            <!-- Map Section -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d238130.15440691105!2d78.90769835448079!3d21.16100605022737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c0a5a31faf13%3A0x19b37d06d0bb3e2b!2sNagpur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1734413643735!5m2!1sen!2sin"
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+
+            <!-- Contact Form Section -->
+            <div class="col-md-6">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Write your message here" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success">Send Message</button>
+                        </div>
+                    </form>
+                    <!-- Success Message -->
+                    <div id="successMessage" class="alert alert-success mt-4 d-none" role="alert">
+                        Your message has been sent successfully👍
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Show the success message
+        const successMessage = document.getElementById("successMessage");
+        successMessage.classList.remove("d-none");
+
+        // Optionally reset the form fields
+        document.getElementById("contactForm").reset();
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+            successMessage.classList.add("d-none");
+        }, 5000);
+    });
+</script>
