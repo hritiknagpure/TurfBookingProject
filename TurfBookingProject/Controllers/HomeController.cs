@@ -1,17 +1,12 @@
-using System.Diagnostics;
 using LoginFormASPcore.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using DinkToPdf.Contracts;
 using DinkToPdf;
-using LoginFormASPcore.Helpers;
 //using LoginFormASPcore.Helpers.YourProjectNamespace.Helpers;
-using LoginFormASPcore.Helpers; // For RenderViewAsync
+using TurfBookingProject.Helpers;
 
-namespace LoginFormASPcore.Controllers
+namespace TurfBookingProject.Controllers
 {
     public class HomeController : Controller
     {

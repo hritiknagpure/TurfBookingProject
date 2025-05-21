@@ -1,16 +1,16 @@
-﻿namespace LoginFormASPcore.Helpers
+﻿namespace TurfBookingProject.Helpers
 {
     using System.Runtime.Loader;
     using System.Reflection;
 
     public class CustomAssemblyLoadContext : AssemblyLoadContext
     {
-        public IntPtr LoadUnmanagedLibrary(string absolutePath)
+        public nint LoadUnmanagedLibrary(string absolutePath)
         {
             return LoadUnmanagedDll(absolutePath);
         }
 
-        protected override IntPtr LoadUnmanagedDll(string unmanagedDllPath)
+        protected override nint LoadUnmanagedDll(string unmanagedDllPath)
         {
             return LoadUnmanagedDllFromPath(unmanagedDllPath);
         }

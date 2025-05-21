@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace LoginFormASPcore.Helpers
+namespace TurfBookingProject.Helpers
 {
     public static class ControllerExtensions
     {
