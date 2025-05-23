@@ -39,9 +39,6 @@ Entity Framework Core
 
 SQL Server
 
-📸 Screenshots
-
-
 📁 Project Setup
 Clone the repository:
 
