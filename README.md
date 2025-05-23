@@ -48,7 +48,8 @@ Clone the repository:
 bash
 Copy
 Edit
-git clone https://github.com/your-username/sports-turf-booking.git
+git clone https://github.com/hritiknagpure/TurfBookingProject.git
+
 cd sports-turf-booking
 Configure the database connection string in appsettings.json.
 
@@ -66,10 +67,6 @@ Edit
 dotnet run
 📌 Future Enhancements
 🗓️ Calendar view for bookings
-
-📍 Google Maps integration for turf location
-
-🔔 Email/SMS notifications for booking confirmations
 
 🤝 Contributing
 Contributions are welcome! If you'd like to improve this project, please fork the repository and submit a pull request. Let's build better software together. 💪
